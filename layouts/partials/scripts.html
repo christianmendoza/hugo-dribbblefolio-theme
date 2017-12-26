@@ -1,12 +1,12 @@
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 
-{{ if and .Site.Params.dribbble.token .Site.Params.dribbble.userId  }}
+{{ if and (not .Site.Params.dribbble.static) .Site.Params.dribbble.token .Site.Params.dribbble.userId .Site.Params.dribbble.perPage  }}
 <script src="/assets/js/jribbble.min.js"></script>
 <script>
   $(document).ready(function() {
     $.jribbble.setToken('{{ .Site.Params.dribbble.token }}');
-    $.jribbble.users('{{ .Site.Params.dribbble.userId }}').shots({{ with .Site.Params.dribbble.perPage }}{ per_page: {{ . }} }{{ end }}).then(function(shots) {
+    $.jribbble.users('{{ .Site.Params.dribbble.userId }}').shots({ per_page: {{ .Site.Params.dribbble.perPage }} }).then(function(shots) {
       var html = [];
 
       shots.forEach(function(shot) {

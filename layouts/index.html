@@ -1,5 +1,24 @@
 {{ define "main" }}
 
-  <div class="row grid-list-wrapper no-gutter-space" id="shots"></div>
+  <div class="row grid-list-wrapper no-gutter-space" id="shots">
+
+    {{ if .Site.Params.dribbble.static }}
+      <!-- https://api.dribbble.com/v1/users/USERID/shots/?access_token=TOKEN&per_page=MAX -->
+      {{- $baseUrl := "https://api.dribbble.com/v1" -}}
+      {{- $userId := .Site.Params.dribbble.userId -}}
+      {{- $apiUrl := (printf "%s/%s/%s/%s/?%s" $baseUrl "users" $userId "shots" ( (querify "access_token" .Site.Params.dribbble.token "per_page" .Site.Params.dribbble.perPage) | safeURL) ) -}}
+      {{- $shots := getJSON $apiUrl -}}
+
+      {{ range $shots }}
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="grid-list">
+            <a href="{{ .html_url }}" target="_blank"><img class="img-responsive" src="{{ .images.normal }}" alt="{{ .title }}"></a>
+            <div class="overlay"><a target="_blank" href="{{ .html_url }}"><h2>{{ .title }}</h2></a></div>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+    
+  </div>
 
 {{ end }}
