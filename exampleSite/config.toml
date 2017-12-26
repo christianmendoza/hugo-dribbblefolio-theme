@@ -1,21 +1,67 @@
 # Site settings
 baseURL = "https://example.org/"
 languageCode = "en-US"
-title = "My New Hugo Site"
-theme = "hugo-<update>-theme"
+title = "DribbbleFolio, a Dribbble Portfolio Theme by gsvineeth.com"
+theme = "hugo-dribbblefolio-theme"
 disableKinds = ["page", "section", "taxonomy", "taxonomyTerm", "RSS", "sitemap", "robotsTXT"]
-copyright = "&copy; Untitled"
+copyright = "&copy; 2017 John Doe. All Rights Reserved."
 
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = ""
 
 [params]
 
-  # Metadata
-  name = ""
-  description = ""
+  # Header
+  [params.header]
+    name = "DribbbleFolio"
+    intro = "<span>Hello, I'm </span>John Doe<span>, Designer & Coder</span>"
 
-  # The original template is released under the Creative Commons Attribution 3.0 License.
-  # Please keep the original attribution link when using for your own project.
-  # If you'd like to use the template without the attribution, you can check out
-  # the license option via the template author's website: 
+  # Dribbble
+  [params.dribbble]
+    static = true
+    token = ""
+    userId = "dribbble"
+    perPage = 12
+
+  # Navigation
+  [[params.nav]]
+    label = "About"
+    url = "#"
+
+  [[params.nav]]
+    label = "Blog"
+    url = "#"
+
+  [[params.nav]]
+    label = "Resume"
+    url = "#"
+
+  [[params.nav]]
+    label = "Contact"
+    url = "#"
+
+  # Social Icons
+  [[params.social]]
+    label = "Facebook"
+    icon = "fa-facebook"
+    url = "https://facebook.com/"
+
+  [[params.social]]
+    label = "Twitter"
+    icon = "fa-twitter"
+    url = "https://twitter.com/"
+
+  [[params.social]]
+    label = "GitHub"
+    icon = "fa-github"
+    url = "https://github.com/"
+
+  [[params.social]]
+    label = "LinkedIn"
+    icon = "fa-linkedin"
+    url = "https://linkedin.com/"
+
+  [[params.social]]
+    label = "Email"
+    icon = "fa-envelope"
+    url = "mailto:name@domain.com"
