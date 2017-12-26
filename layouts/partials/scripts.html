@@ -1,7 +1,7 @@
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 
-{{ if and (not .Site.Params.dribbble.static) .Site.Params.dribbble.token .Site.Params.dribbble.userId .Site.Params.dribbble.perPage  }}
+{{ if and (not .Site.Params.dribbble.static) ($.Scratch.Get "dribbbleSet") }}
 <script src="/assets/js/jribbble.min.js"></script>
 <script>
   $(document).ready(function() {

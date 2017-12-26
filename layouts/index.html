@@ -2,7 +2,7 @@
 
   <div class="row grid-list-wrapper no-gutter-space" id="shots">
 
-    {{ if .Site.Params.dribbble.static }}
+    {{ if and (.Site.Params.dribbble.static) ($.Scratch.Get "dribbbleSet") }}
       <!-- https://api.dribbble.com/v1/users/USERID/shots/?access_token=TOKEN&per_page=MAX -->
       {{- $baseUrl := "https://api.dribbble.com/v1" -}}
       {{- $userId := .Site.Params.dribbble.userId -}}
@@ -18,7 +18,7 @@
         </div>
       {{ end }}
     {{ end }}
-    
+
   </div>
 
 {{ end }}
