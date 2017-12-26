@@ -1,0 +1,15 @@
+<footer>
+  <div class="container">
+    <nav class="nav-footer">
+      <ul>
+        {{ partial "nav" . }}
+      </ul>
+
+      <ul>
+        {{ partial "social" . }}
+      </ul>
+
+      <p class="credits text-center">{{ .Site.Copyright | safeHTML }}</p>
+    </nav>
+  </div>
+</footer>

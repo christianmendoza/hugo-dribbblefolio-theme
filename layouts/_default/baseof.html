@@ -1,13 +1,20 @@
 <!doctype html>
-
-<html>
+<!--
+dribbble.com/gsvineeth
+twitter.com/gsvineeth
+-->
+<html lang="en">
   <head>
     {{ partial "head" . }}
   </head>
-
   <body>
-
-    {{ block "main" . }}{{ end }}
-
+    <div class="wrapper">
+      <div class="container">
+        {{ partial "header" . }}
+        {{ block "main" . }}{{ end }}
+      </div>
+    </div>
+    {{ partial "footer" . }}
+    {{ partial "scripts" . }}
   </body>
 </html>

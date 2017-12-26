@@ -1,0 +1,25 @@
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+{{ if and .Site.Params.dribbble.token .Site.Params.dribbble.userId  }}
+<script src="/assets/js/jribbble.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $.jribbble.setToken('{{ .Site.Params.dribbble.token }}');
+    $.jribbble.users('{{ .Site.Params.dribbble.userId }}').shots({{ with .Site.Params.dribbble.perPage }}{ per_page: {{ . }} }{{ end }}).then(function(shots) {
+      var html = [];
+
+      shots.forEach(function(shot) {
+        html.push('<div class="col-sm-6 col-md-4 col-lg-4"> <div class="grid-list">');
+        html.push('<a href="' + shot.html_url + '" target="_blank">');
+        html.push('<img class="img-responsive" src="' + shot.images.normal + '" alt="' + shot.title + '"><\/a>');
+        html.push('<div class="overlay"><a target="_blank" href="' + shot.html_url + '">');
+        html.push('<h2>' + shot.title + '<\/h2>');
+        html.push('<\/a> <\/div><\/div><\/div>');
+      });
+
+      $('#shots').html(html.join(''));
+    });
+  });
+</script>
+{{ end }}
